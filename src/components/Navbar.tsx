@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Terminal, Code } from "lucide-react";
+import { Menu, X, Terminal, Code, Download } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
+import resumePDF from "../data/virender-yadav-resume.pdf";
 
 interface NavbarProps {
   activeSection: string;
@@ -91,7 +92,7 @@ export default function Navbar({ activeSection, onNavClick }: NavbarProps) {
           </nav>
 
           {/* Call to Action & Availability Indicator */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-4">
             <div className="flex items-center gap-2">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyber-lime opacity-75"></span>
@@ -99,6 +100,18 @@ export default function Navbar({ activeSection, onNavClick }: NavbarProps) {
               </span>
               <span className="text-[10px] text-cyber-lime font-mono uppercase tracking-widest">Available for Hire</span>
             </div>
+
+            <a
+              href={resumePDF}
+              download="Virender-Yadav-Resume.pdf"
+              className="relative group px-5 py-2 font-display text-sm font-bold tracking-wide text-white bg-transparent border border-cyber-cyan rounded-lg overflow-hidden cursor-pointer shadow-[0_0_10px_rgba(0,245,255,0.2)] transition-all duration-300 hover:border-cyber-lime hover:shadow-neon-cyan"
+            >
+              <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-cyber-cyan to-cyber-lime opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+              <span className="relative flex items-center gap-1">
+                Resume
+                <Download className="w-4 h-4 text-cyber-cyan group-hover:translate-y-1 transition-transform duration-300" />
+              </span>
+            </a>
 
             <button
               onClick={() => handleItemClick("contact")}
@@ -150,7 +163,15 @@ export default function Navbar({ activeSection, onNavClick }: NavbarProps) {
                   </button>
                 );
               })}
-              <div className="pt-4 px-4">
+              <div className="pt-4 px-4 space-y-2">
+                <a
+                  href={resumePDF}
+                  download="Virender-Yadav-Resume.pdf"
+                  className="w-full py-3 flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-cyber-cyan to-cyber-lime font-display font-bold text-black text-center cursor-pointer shadow-neon-cyan hover:scale-[1.02] transition-transform duration-200"
+                >
+                  <Download className="w-5 h-5" />
+                  Download Resume
+                </a>
                 <button
                   onClick={() => handleItemClick("contact")}
                   className="w-full py-3 flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-cyber-purple to-cyber-cyan font-display font-bold text-white text-center cursor-pointer shadow-neon-purple hover:scale-[1.02] transition-transform duration-200"

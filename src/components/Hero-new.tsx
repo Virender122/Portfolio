@@ -137,12 +137,12 @@ export default function Hero({ onNavClick }: HeroProps) {
   return (
     <section
       id="home"
-      className="relative min-h-screen pt-5 flex items-center justify-center overflow-hidden bg-cyber-bg-primary"
+      className="relative min-h-screen pt-20 flex items-center justify-center overflow-hidden bg-cyber-bg-primary"
     >
       {/* Absolute Decorative Glows and Cyber Grids */}
       <div className="absolute inset-0 cyber-grid opacity-30 pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyber-bg-primary/50 to-cyber-bg-primary pointer-events-none" />
-      
+
       {/* Blur Orbs for background depth */}
       <div className="absolute top-[20%] left-[10%] w-[300px] h-[300px] rounded-full bg-cyber-cyan/15 blur-[120px] pointer-events-none animate-pulse-slow" />
       <div className="absolute bottom-[20%] right-[10%] w-[350px] h-[350px] rounded-full bg-cyber-purple/10 blur-[130px] pointer-events-none animate-pulse-slow" style={{ animationDelay: "2s" }} />
@@ -154,7 +154,7 @@ export default function Hero({ onNavClick }: HeroProps) {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="lg:col-span-2 space-y-4 flex flex-col justify-between"
+            className="lg:col-span-3 space-y-4 flex flex-col justify-between"
           >
             {/* Dice */}
             <div className="bg-white/5 border border-white/10 rounded-3xl p-5 relative overflow-hidden backdrop-blur-md shadow-2xl">
@@ -198,7 +198,15 @@ export default function Hero({ onNavClick }: HeroProps) {
               <div className="relative z-10">
                 <p className="text-[10px] uppercase tracking-[0.35em] text-text-secondary">Current Turn</p>
                 <div className="mt-3">
-                  <span className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold ${winner ? "bg-red-500/20 border border-red-500/50 text-red-300" : turn === "player" ? "bg-cyber-cyan/10 border border-cyber-cyan/50 text-cyber-cyan shadow-neon-cyan" : "bg-cyber-purple/10 border border-cyber-purple/50 text-cyber-purple shadow-neon-purple"}`}>
+                  <span
+                    className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold ${
+                      winner
+                        ? "bg-red-500/20 border border-red-500/50 text-red-300"
+                        : turn === "player"
+                        ? "bg-cyber-cyan/10 border border-cyber-cyan/50 text-cyber-cyan shadow-neon-cyan"
+                        : "bg-cyber-purple/10 border border-cyber-purple/50 text-cyber-purple shadow-neon-purple"
+                    }`}
+                  >
                     {winner ? "Game Over" : turn === "player" ? "Your Move" : "CPU Move"}
                   </span>
                 </div>
@@ -229,7 +237,7 @@ export default function Hero({ onNavClick }: HeroProps) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-5 bg-white/5 border border-white/10 rounded-3xl p-6 sm:p-8 relative overflow-hidden backdrop-blur-md flex flex-col justify-between shadow-2xl group hover:border-cyber-purple/30 transition-all duration-300"
+            className="lg:col-span-6 bg-white/5 border border-white/10 rounded-3xl p-6 sm:p-8 relative overflow-hidden backdrop-blur-md flex flex-col justify-between shadow-2xl group hover:border-cyber-purple/30 transition-all duration-300"
           >
             {/* Celebration Overlay */}
             {showCelebration && (
@@ -317,7 +325,7 @@ export default function Hero({ onNavClick }: HeroProps) {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.25 }}
-            className="lg:col-span-5 bg-white/5 border border-white/10 rounded-3xl p-6 sm:p-8 relative overflow-hidden backdrop-blur-md flex flex-col justify-between shadow-2xl group hover:border-cyber-cyan/30 transition-all duration-300"
+            className="lg:col-span-3 bg-white/5 border border-white/10 rounded-3xl p-6 sm:p-8 relative overflow-hidden backdrop-blur-md flex flex-col justify-between shadow-2xl group hover:border-cyber-cyan/30 transition-all duration-300"
           >
             {/* Grid background */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
@@ -332,14 +340,14 @@ export default function Hero({ onNavClick }: HeroProps) {
               </div>
 
               <div className="space-y-2">
-                <h1 className="font-display font-bold text-4xl sm:text-6xl tracking-tight text-white leading-tight">
+                <h1 className="font-display font-bold text-2xl sm:text-3xl tracking-tight text-white leading-tight">
                   Hi, I'm{" "}
                   <span className="bg-gradient-to-r from-cyber-cyan via-cyber-purple to-cyber-pink bg-clip-text text-transparent text-neon-cyan">
                     {name}
                   </span>
                 </h1>
 
-                <h2 className="font-display font-semibold text-2sm sm:text-base text-text-secondary tracking-wide">
+                <h2 className="font-display font-semibold text-sm sm:text-base text-text-secondary tracking-wide">
                   {role}
                 </h2>
 
@@ -370,7 +378,7 @@ export default function Hero({ onNavClick }: HeroProps) {
             </div>
 
             {/* CTA & Social Actions */}
-            <div className="relative z-10 flex flex items-center gap-4 pt-4 border-t border-white/5 mt-4">
+            <div className="relative z-10 flex flex-col gap-2 pt-4 border-t border-white/5 mt-4">
               <button
                 onClick={() => onNavClick("projects")}
                 className="w-full px-4 py-2.5 bg-gradient-to-r from-cyber-cyan to-cyber-purple text-white font-display font-bold text-sm rounded-xl shadow-neon-cyan hover:shadow-neon-purple cursor-pointer transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
@@ -408,6 +416,22 @@ export default function Hero({ onNavClick }: HeroProps) {
               </div>
             </div>
           </motion.div>
+        </div>
+
+        {/* Scroll down indicator */}
+        <div className="w-full flex justify-center mt-16 md:mt-24">
+          <button
+            onClick={() => onNavClick("about")}
+            className="flex flex-col items-center gap-2 cursor-pointer text-text-secondary hover:text-cyber-cyan transition-colors duration-300"
+          >
+            <span className="font-mono text-xs tracking-widest uppercase">Scroll Explore</span>
+            <motion.div
+              animate={{ y: [0, 6, 0] }}
+              transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+            >
+              <ArrowDown className="w-4 h-4 text-cyber-cyan" />
+            </motion.div>
+          </button>
         </div>
       </div>
     </section>

@@ -17,7 +17,7 @@ export default function App() {
   const scrollToSection = (sectionId: string) => {
     const targetElement = document.getElementById(sectionId);
     if (targetElement) {
-      const headerOffset = 80; // height of navbar
+      const headerOffset = 5; // height of navbar
       const elementPosition = targetElement.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
