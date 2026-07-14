@@ -11,6 +11,7 @@ export default function Contact() {
   const [errors, setErrors] = useState({ name: "", email: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   // Validate form
   const validateForm = () => {
@@ -53,24 +54,45 @@ export default function Contact() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!validateForm()) return;
 
     setIsSubmitting(true);
+    setSubmitError("");
 
-    // Simulate submission API call with a realistic delay
-    setTimeout(() => {
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${email}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+        },
+        body: new URLSearchParams({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          message: formData.message.trim(),
+          _subject: `New portfolio contact from ${formData.name.trim()}`,
+          _captcha: "false",
+          _template: "table",
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Unable to send message right now.");
+      }
+
       setIsSubmitting(false);
       setIsSuccess(true);
       setFormData({ name: "", email: "", message: "" });
-      
-      // Auto close success panel after 5 seconds
+
       setTimeout(() => {
         setIsSuccess(false);
       }, 5000);
-    }, 1500);
+    } catch (error) {
+      setIsSubmitting(false);
+      setSubmitError("Message could not be sent. Please try again or contact me directly.");
+    }
   };
 
   return (
@@ -314,6 +336,10 @@ export default function Contact() {
                         </>
                       )}
                     </button>
+
+                    {submitError && (
+                      <p className="font-mono text-[10px] text-cyber-pink text-center">{submitError}</p>
+                    )}
                   </motion.form>
                 ) : (
                   <motion.div

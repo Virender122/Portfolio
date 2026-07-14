@@ -154,7 +154,7 @@ export default function Hero({ onNavClick }: HeroProps) {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="lg:col-span-3 space-y-4 flex flex-col justify-between"
+            className="lg:col-span-3 grid grid-cols-2 gap-4 lg:grid-cols-1"
           >
             {/* Dice */}
             <div className="bg-white/5 border border-white/10 rounded-3xl p-5 relative overflow-hidden backdrop-blur-md shadow-2xl">
@@ -191,7 +191,7 @@ export default function Hero({ onNavClick }: HeroProps) {
                 </div>
               </div>
             </div>
-
+           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {/* Turn Status */}
             <div className="bg-white/5 border border-white/10 rounded-3xl p-4 relative overflow-hidden backdrop-blur-md shadow-2xl">
               <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
@@ -230,6 +230,7 @@ export default function Hero({ onNavClick }: HeroProps) {
                 {turn === "player" ? (isRolling ? "Rolling…" : "Roll Dice") : "Wait for CPU"}
               </button>
             )}
+          </div>
           </motion.div>
 
           {/* CENTER PANEL: Game Board */}
@@ -295,7 +296,7 @@ export default function Hero({ onNavClick }: HeroProps) {
                             {isLadder && <span className="text-[10px] text-cyber-cyan uppercase tracking-[0.2em]">L↑</span>}
                             {isSnake && <span className="text-[10px] text-cyber-purple uppercase tracking-[0.2em]">S↓</span>}
                           </div>
-                          <div className="mt-auto flex flex-wrap gap-1 justify-end">
+                          <div className="flex flex-wrap gap-1 justify-center items-center h-full">
                             {isPlayerHere && (
                               <span className="inline-flex items-center justify-center rounded-full bg-cyber-cyan/95 px-2 py-1 text-[10px] font-semibold text-black shadow-[0_0_10px_rgba(0,245,255,0.4)]">
                                 YOU
